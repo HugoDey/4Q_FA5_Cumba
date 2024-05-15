@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+     <title>Shape Generator</title>
+    <script>
+        function askForNumber() {
+            let input;
+            while (true) {
+                input = prompt("Please enter a number:");
+                if (input !== null && input.trim() !== "" && !isNaN(input)) {
+                    return parseInt(input, 10);
+                }
+                alert("That's not a valid number. Please try again.");
+            }
+        }
+
+        function displayShape() {
+            let number = askForNumber();
+            let output = "Number inputted: " + number + "<br>";
+
+            if (number % 2 !== 0) {
+                for (let i = number; i > 0; i--) {
+                    for (let j = 0; j < number; j++) {
+                        output += i + " ";
+                    }
+                    output += "<br>";
+                }
+            } else {
+                for (let i = number; i > 0; i--) {
+                    for (let j = 0; j < i; j++) {
+                        output += i + " ";
+                    }
+                    output += "<br>";
+                }
+            }
+
+            document.getElementById("shapeOutput").innerHTML = output;
+        }
+    </script>
+</head>
+<body onload="displayShape()">
+    <div id="shapeOutput"></div>   
+</body>
+</html>
